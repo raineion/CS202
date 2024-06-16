@@ -1,0 +1,22 @@
+studentID firstName lastName letterGrade
+you11ug Steven Young A
+for92gr Anna Ford B
+bur12ug Julia Burns C
+hal18ug Michael Hall F
+ort99gr Melissa Ortiz Invalid scores
+smi23ug Veronica Smith B
+wil96ug Patrick Williams C
+gom12gr Elizabeth Gomez A
+ada53ug Doug Adams B
+bar21gr Foo Bar Invalid scores
+ale23ug Emily Alexander B
+daw21ug Philip Dawson C
+dia75ug Stephanie Diaz B
+whi31gr Melissa White A
+gon83ug Tucker Gonzales B
+web54ug Stephen Webb B
+cla42gr Vanessa Clark D
+bli09ug Gregory Bliss F
+stu99ug Test Student Invalid scores
+bur29gr Raul Burns A
+bir61ug Richard Bird B
