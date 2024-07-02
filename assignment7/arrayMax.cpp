@@ -10,12 +10,12 @@
 
 /*
  * arrayMax
- * Description: Recursive function to find the 
+ * Description: Recursive function to find the
  *              maximum value in a portion of an array
  * Input: int arr[] - the array to search
  *        int start - the starting index to search
  *        int length - the number of elements to include in the search
- * Output: Returns the maximum value in the 
+ * Output: Returns the maximum value in the
  *         specified portion of the array
  */
 int arrayMax(int arr[], int start, int length)

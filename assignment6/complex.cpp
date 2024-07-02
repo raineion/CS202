@@ -6,7 +6,7 @@
  */
 
 #include "complex.h" // for Complex information
-#include <cmath> // for sqrt, atan2
+#include <cmath>     // for sqrt, atan2
 
 /*
  * Complex::Complex
@@ -30,7 +30,8 @@ Complex::Complex(double re, double im) : a(re), b(im) {}
  * Input: None
  * Output: double - real part
  */
-double Complex::real() const {
+double Complex::real() const
+{
     return a;
 }
 
@@ -40,7 +41,8 @@ double Complex::real() const {
  * Input: None
  * Output: double - imaginary part
  */
-double Complex::imag() const {
+double Complex::imag() const
+{
     return b;
 }
 
@@ -50,7 +52,8 @@ double Complex::imag() const {
  * Input: double re - real part
  * Output: None
  */
-void Complex::setReal(double re) {
+void Complex::setReal(double re)
+{
     a = re;
 }
 
@@ -60,7 +63,8 @@ void Complex::setReal(double re) {
  * Input: double im - imaginary part
  * Output: None
  */
-void Complex::setImag(double im) {
+void Complex::setImag(double im)
+{
     b = im;
 }
 
@@ -70,7 +74,8 @@ void Complex::setImag(double im) {
  * Input: None
  * Output: None
  */
-void Complex::conj() {
+void Complex::conj()
+{
     b = -b;
 }
 
@@ -80,7 +85,8 @@ void Complex::conj() {
  * Input: const Complex &c - complex number
  * Output: Complex - conjugated complex number
  */
-Complex conj(const Complex &c) {
+Complex conj(const Complex &c)
+{
     return Complex(c.a, -c.b);
 }
 
@@ -91,7 +97,8 @@ Complex conj(const Complex &c) {
  * Input: None
  * Output: double - magnitude
  */
-double Complex::abs() const {
+double Complex::abs() const
+{
     return std::sqrt(a * a + b * b);
 }
 
@@ -101,7 +108,8 @@ double Complex::abs() const {
  * Input: None
  * Output: double - argument in the interval (-π, π]
  */
-double Complex::arg() const {
+double Complex::arg() const
+{
     return std::atan2(b, a);
 }
 
@@ -111,7 +119,8 @@ double Complex::arg() const {
  * Input: double d - real number
  * Output: Complex - result of addition
  */
-Complex Complex::operator+(double d) {
+Complex Complex::operator+(double d)
+{
     return Complex(a + d, b);
 }
 
@@ -121,7 +130,8 @@ Complex Complex::operator+(double d) {
  * Input: const Complex &otherC - complex number
  * Output: Complex - result of addition
  */
-Complex Complex::operator+(const Complex &otherC) {
+Complex Complex::operator+(const Complex &otherC)
+{
     return Complex(a + otherC.a, b + otherC.b);
 }
 
@@ -131,7 +141,8 @@ Complex Complex::operator+(const Complex &otherC) {
  * Input: double d - real number
  * Output: Complex - result of subtraction
  */
-Complex Complex::operator-(double d) {
+Complex Complex::operator-(double d)
+{
     return Complex(a - d, b);
 }
 
@@ -141,7 +152,8 @@ Complex Complex::operator-(double d) {
  * Input: const Complex &otherC - complex number
  * Output: Complex - result of subtraction
  */
-Complex Complex::operator-(const Complex &otherC) {
+Complex Complex::operator-(const Complex &otherC)
+{
     return Complex(a - otherC.a, b - otherC.b);
 }
 
@@ -151,7 +163,8 @@ Complex Complex::operator-(const Complex &otherC) {
  * Input: double d - real number
  * Output: Complex - result of multiplication
  */
-Complex Complex::operator*(double d) {
+Complex Complex::operator*(double d)
+{
     return Complex(a * d, b * d);
 }
 
@@ -161,9 +174,11 @@ Complex Complex::operator*(double d) {
  * Input: const Complex &otherC - complex number
  * Output: Complex - result of multiplication
  */
-Complex Complex::operator*(const Complex &otherC) {
-    return Complex(a * otherC.a - b * otherC.b, a * 
-                   otherC.b + b * otherC.a);
+Complex Complex::operator*(const Complex &otherC)
+{
+    return Complex(a * otherC.a - b * otherC.b, a *
+                                                        otherC.b +
+                                                    b * otherC.a);
 }
 
 /*
@@ -172,7 +187,8 @@ Complex Complex::operator*(const Complex &otherC) {
  * Input: double d - real number
  * Output: Complex - result of division
  */
-Complex Complex::operator/(double d) {
+Complex Complex::operator/(double d)
+{
     return Complex(a / d, b / d);
 }
 
@@ -182,9 +198,10 @@ Complex Complex::operator/(double d) {
  * Input: const Complex &otherC - complex number
  * Output: Complex - result of division
  */
-Complex Complex::operator/(const Complex &otherC) {
+Complex Complex::operator/(const Complex &otherC)
+{
     double denominator = otherC.a * otherC.a + otherC.b * otherC.b;
-    return Complex((a * otherC.a + b * otherC.b) / denominator, 
+    return Complex((a * otherC.a + b * otherC.b) / denominator,
                    (b * otherC.a - a * otherC.b) / denominator);
 }
 
@@ -194,9 +211,9 @@ Complex Complex::operator/(const Complex &otherC) {
  * Input: const Complex &otherC - complex number
  * Output: bool - true if equal, false otherwise
  */
-bool Complex::operator==(const Complex &otherC) {
-    return std::fabs(a - otherC.a) 
-           < 1e-2 && std::fabs(b - otherC.b) < 1e-2;
+bool Complex::operator==(const Complex &otherC)
+{
+    return std::fabs(a - otherC.a) < 1e-2 && std::fabs(b - otherC.b) < 1e-2;
 }
 
 /*
@@ -205,7 +222,8 @@ bool Complex::operator==(const Complex &otherC) {
  * Input: const Complex &otherC - complex number
  * Output: bool - true if not equal, false otherwise
  */
-bool Complex::operator!=(const Complex &otherC) {
+bool Complex::operator!=(const Complex &otherC)
+{
     return !(*this == otherC);
 }
 
@@ -215,7 +233,8 @@ bool Complex::operator!=(const Complex &otherC) {
  * Input: ostream &out - output stream, const Complex &c - complex number
  * Output: ostream& - output stream
  */
-std::ostream& operator<<(std::ostream &out, const Complex &c) {
+std::ostream &operator<<(std::ostream &out, const Complex &c)
+{
     if (c.b < 0)
         out << c.a << c.b << 'i';
     else
@@ -229,7 +248,8 @@ std::ostream& operator<<(std::ostream &out, const Complex &c) {
  * Input: istream &in - input stream, Complex &c - complex number
  * Output: istream& - input stream
  */
-std::istream& operator>>(std::istream &in, Complex &c) {
+std::istream &operator>>(std::istream &in, Complex &c)
+{
     in >> c.a >> c.b;
     return in;
 }
@@ -240,7 +260,8 @@ std::istream& operator>>(std::istream &in, Complex &c) {
  * Input: double d - real number, const Complex &c - complex number
  * Output: Complex - result of addition
  */
-Complex operator+(double d, const Complex &c) {
+Complex operator+(double d, const Complex &c)
+{
     return Complex(d + c.a, c.b);
 }
 
@@ -250,7 +271,8 @@ Complex operator+(double d, const Complex &c) {
  * Input: double d - real number, const Complex &c - complex number
  * Output: Complex - result of subtraction
  */
-Complex operator-(double d, const Complex &c) {
+Complex operator-(double d, const Complex &c)
+{
     return Complex(d - c.a, -c.b);
 }
 
@@ -260,7 +282,8 @@ Complex operator-(double d, const Complex &c) {
  * Input: double d - real number, const Complex &c - complex number
  * Output: Complex - result of multiplication
  */
-Complex operator*(double d, const Complex &c) {
+Complex operator*(double d, const Complex &c)
+{
     return Complex(d * c.a, d * c.b);
 }
 
@@ -270,7 +293,8 @@ Complex operator*(double d, const Complex &c) {
  * Input: double d - real number, const Complex &c - complex number
  * Output: Complex - result of division
  */
-Complex operator/(double d, const Complex &c) {
+Complex operator/(double d, const Complex &c)
+{
     double denominator = c.a * c.a + c.b * c.b;
     return Complex((d * c.a) / denominator, (-d * c.b) / denominator);
 }
