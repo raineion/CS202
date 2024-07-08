@@ -1,6 +1,6 @@
 /*
  * Name: Daniel Martinez Julio, CS 202 - Summer II, Assignment 4
- * Description: Implementation of the Pizza class and a 
+ * Description: Implementation of the Pizza class and a
  *              function to read pizza orders from a file.
  * Input: Pizza order data from a file.
  * Output: Pizza information printed to the console.
@@ -21,7 +21,7 @@ using namespace std;
  * return value: None
  * Description: Default constructor
  */
-Pizza::Pizza() : customerName(""), size(""), 
+Pizza::Pizza() : customerName(""), size(""),
                  nToppings(0), toppings(nullptr) {}
 
 /*
@@ -30,10 +30,11 @@ Pizza::Pizza() : customerName(""), size(""),
  * return value: None
  * Description: Parametrized constructor
  */
-Pizza::Pizza(string cName, string sz, int n_top, string top[]) : 
-             customerName(cName), size(sz), nToppings(n_top) {
+Pizza::Pizza(string cName, string sz, int n_top, string top[]) : customerName(cName), size(sz), nToppings(n_top)
+{
     toppings = new string[nToppings];
-    for (int i = 0; i < nToppings; i++) {
+    for (int i = 0; i < nToppings; i++)
+    {
         toppings[i] = top[i];
     }
 }
@@ -44,7 +45,8 @@ Pizza::Pizza(string cName, string sz, int n_top, string top[]) :
  * return value: string
  * Description: Returns the customer name
  */
-string Pizza::getCustomerName() {
+string Pizza::getCustomerName()
+{
     return customerName;
 }
 
@@ -54,7 +56,8 @@ string Pizza::getCustomerName() {
  * return value: string
  * Description: Returns the size of the pizza
  */
-string Pizza::getSize() {
+string Pizza::getSize()
+{
     return size;
 }
 
@@ -64,7 +67,8 @@ string Pizza::getSize() {
  * return value: int
  * Description: Returns the number of toppings
  */
-int Pizza::getNtoppings() {
+int Pizza::getNtoppings()
+{
     return nToppings;
 }
 
@@ -74,12 +78,17 @@ int Pizza::getNtoppings() {
  * return value: double
  * Description: Calculates and returns the price of the pizza
  */
-double Pizza::getPrice() {
+double Pizza::getPrice()
+{
     double basePrice = 0.0;
-    if (size == "small") basePrice = 12.0;
-    else if (size == "medium") basePrice = 14.0;
-    else if (size == "large") basePrice = 16.0;
-    else if (size == "x-large") basePrice = 18.0;
+    if (size == "small")
+        basePrice = 12.0;
+    else if (size == "medium")
+        basePrice = 14.0;
+    else if (size == "large")
+        basePrice = 16.0;
+    else if (size == "x-large")
+        basePrice = 18.0;
     return basePrice + (nToppings * 1.50);
 }
 
@@ -89,7 +98,8 @@ double Pizza::getPrice() {
  * return value: void
  * Description: Sets the customer name
  */
-void Pizza::setCustomerName(string cName) {
+void Pizza::setCustomerName(string cName)
+{
     customerName = cName;
 }
 
@@ -99,7 +109,8 @@ void Pizza::setCustomerName(string cName) {
  * return value: void
  * Description: Sets the size of the pizza
  */
-void Pizza::setSize(string sz) {
+void Pizza::setSize(string sz)
+{
     size = sz;
 }
 
@@ -109,13 +120,16 @@ void Pizza::setSize(string sz) {
  * return value: void
  * Description: Sets the toppings of the pizza
  */
-void Pizza::setToppings(int n_top, string top[]) {
-    if (toppings != nullptr) {
+void Pizza::setToppings(int n_top, string top[])
+{
+    if (toppings != nullptr)
+    {
         delete[] toppings;
     }
     nToppings = n_top;
     toppings = new string[nToppings];
-    for (int i = 0; i < nToppings; i++) {
+    for (int i = 0; i < nToppings; i++)
+    {
         toppings[i] = top[i];
     }
 }
@@ -126,12 +140,15 @@ void Pizza::setToppings(int n_top, string top[]) {
  * return value: void
  * Description: Prints the pizza information in the expected format
  */
-void Pizza::printInfo() {
+void Pizza::printInfo()
+{
     cout << "Customer name: " << customerName << endl;
     cout << "Size: " << size << endl;
-    if (nToppings > 0) {
+    if (nToppings > 0)
+    {
         cout << "Toppings:" << endl;
-        for (int i = 0; i < nToppings; i++) {
+        for (int i = 0; i < nToppings; i++)
+        {
             cout << toppings[i] << endl;
         }
     }
@@ -144,8 +161,10 @@ void Pizza::printInfo() {
  * return value: None
  * Description: Destructor that frees allocated memory
  */
-Pizza::~Pizza() {
-    if (toppings != nullptr) {
+Pizza::~Pizza()
+{
+    if (toppings != nullptr)
+    {
         delete[] toppings;
     }
 }
@@ -156,8 +175,9 @@ Pizza::~Pizza() {
  * return value: bool
  * Description: Checks if the pizza size is valid
  */
-bool isValidSize(const string& size) {
-    return (size == "small" || size == "medium" || 
+bool isValidSize(const string &size)
+{
+    return (size == "small" || size == "medium" ||
             size == "large" || size == "x-large");
 }
 
@@ -167,12 +187,15 @@ bool isValidSize(const string& size) {
  * return value: bool
  * Description: Checks if the topping is valid
  */
-bool isValidTopping(const string& topping) {
-    string validToppings[] = {"pepperoni", "sausage", "ham", 
-                              "peppers", "onions", "olives", 
+bool isValidTopping(const string &topping)
+{
+    string validToppings[] = {"pepperoni", "sausage", "ham",
+                              "peppers", "onions", "olives",
                               "pineapple"};
-    for (const string& validTopping : validToppings) {
-        if (topping == validTopping) {
+    for (const string &validTopping : validToppings)
+    {
+        if (topping == validTopping)
+        {
             return true;
         }
     }
@@ -183,12 +206,14 @@ bool isValidTopping(const string& topping) {
  * function_identifier: readPizzasFromFile
  * parameters: string fileName, Pizza *pizzaList[]
  * return value: unsigned int
- * Description: Reads pizzas from a file and 
+ * Description: Reads pizzas from a file and
  *              returns the number of valid pizzas read
  */
-unsigned int readPizzasFromFile(string fileName, Pizza *pizzaList[]) {
+unsigned int readPizzasFromFile(string fileName, Pizza *pizzaList[])
+{
     ifstream file(fileName);
-    if (!file) {
+    if (!file)
+    {
         cerr << "Unable to open file " << fileName << endl;
         exit(1);
     }
@@ -197,24 +222,28 @@ unsigned int readPizzasFromFile(string fileName, Pizza *pizzaList[]) {
 
     unsigned int n_pizzas = 0;
     string line;
-    while (getline(file, line)) {
+    while (getline(file, line))
+    {
         istringstream ss(line);
         string cName, sz, topping;
         ss >> cName >> sz;
 
-        if (!isValidSize(sz)) {
+        if (!isValidSize(sz))
+        {
             continue; // Skip invalid pizza size
         }
 
         string tempToppings[100];
         int n_top = 0;
-        while (ss >> topping) {
-            if (isValidTopping(topping)) {
+        while (ss >> topping)
+        {
+            if (isValidTopping(topping))
+            {
                 tempToppings[n_top++] = topping;
             }
         }
 
-        pizzaList[n_pizzas++] = new Pizza(cName, sz, 
+        pizzaList[n_pizzas++] = new Pizza(cName, sz,
                                           n_top, tempToppings);
     }
 

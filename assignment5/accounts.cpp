@@ -1,14 +1,14 @@
 /*
  * Name: Daniel Martinez Julio, CS 202 - Summer II, Assignment 5
- * Description: Implementation of Account, CheckingAccount, 
+ * Description: Implementation of Account, CheckingAccount,
  *              and SavingsAccount classes
  * Input: N/A
  * Output: N/A
  */
 
 #include "accounts.h" // for Account information
-#include <cmath> // for pow
-#include <iomanip> // for fixed, setprecision
+#include <cmath>      // for pow
+#include <iomanip>    // for fixed, setprecision
 
 using namespace std;
 
@@ -18,7 +18,7 @@ using namespace std;
  * Input: None
  * Output: None
  */
-Account::Account() : customerName(""), accountBalance(0.0), 
+Account::Account() : customerName(""), accountBalance(0.0),
                      interestRate(0.0) {}
 
 /*
@@ -28,8 +28,8 @@ Account::Account() : customerName(""), accountBalance(0.0),
  * Output: None
  */
 Account::Account(string name, double amount, double rate)
-    : customerName(name), accountBalance(amount), 
-                             interestRate(rate) {}
+    : customerName(name), accountBalance(amount),
+      interestRate(rate) {}
 
 /*
  * Account::getCustomerName
@@ -37,7 +37,8 @@ Account::Account(string name, double amount, double rate)
  * Input: None
  * Output: string
  */
-string Account::getCustomerName() const {
+string Account::getCustomerName() const
+{
     return customerName;
 }
 
@@ -47,7 +48,8 @@ string Account::getCustomerName() const {
  * Input: None
  * Output: double
  */
-double Account::getAccountBalance() const {
+double Account::getAccountBalance() const
+{
     return accountBalance;
 }
 
@@ -57,7 +59,8 @@ double Account::getAccountBalance() const {
  * Input: None
  * Output: double
  */
-double Account::getInterestRate() const {
+double Account::getInterestRate() const
+{
     return interestRate;
 }
 
@@ -67,7 +70,8 @@ double Account::getInterestRate() const {
  * Input: string name
  * Output: None
  */
-void Account::setCustomerName(string name) {
+void Account::setCustomerName(string name)
+{
     customerName = name;
 }
 
@@ -77,7 +81,8 @@ void Account::setCustomerName(string name) {
  * Input: double amount
  * Output: None
  */
-void Account::setAccountBalance(double amount) {
+void Account::setAccountBalance(double amount)
+{
     accountBalance = amount;
 }
 
@@ -87,7 +92,8 @@ void Account::setAccountBalance(double amount) {
  * Input: double rate
  * Output: None
  */
-void Account::setInterestRate(double rate) {
+void Account::setInterestRate(double rate)
+{
     interestRate = rate;
 }
 
@@ -97,14 +103,14 @@ void Account::setInterestRate(double rate) {
  * Input: None
  * Output: None
  */
-void Account::compoundInterest() {
+void Account::compoundInterest()
+{
     double rate = interestRate / 100.0;
     double n = 365.0; // Compounding daily
     double t = 1.0 / 365.0;
-    
-    accountBalance = accountBalance * pow
-                     ((1 + rate / n), n * t);
-    accountBalance = round(accountBalance * 100) / 100; 
+
+    accountBalance = accountBalance * pow((1 + rate / n), n * t);
+    accountBalance = round(accountBalance * 100) / 100;
 }
 
 /*
@@ -121,8 +127,8 @@ CheckingAccount::CheckingAccount() : Account() {}
  * Input: string name, double amount, double rate
  * Output: None
  */
-CheckingAccount::CheckingAccount(string name, 
-      double amount, double rate)
+CheckingAccount::CheckingAccount(string name,
+                                 double amount, double rate)
     : Account(name, amount, rate) {}
 
 /*
@@ -131,13 +137,14 @@ CheckingAccount::CheckingAccount(string name,
  * Input: None
  * Output: None
  */
-void CheckingAccount::printAccountInfo() const {
+void CheckingAccount::printAccountInfo() const
+{
     cout << fixed << setprecision(2);
-    cout << "Checking account for customer " 
+    cout << "Checking account for customer "
          << getCustomerName() << endl;
-    cout << "Current balance: " 
+    cout << "Current balance: "
          << getAccountBalance() << endl;
-    cout << "APR: " << getInterestRate() 
+    cout << "APR: " << getInterestRate()
          << "%" << endl;
 }
 
@@ -147,7 +154,8 @@ void CheckingAccount::printAccountInfo() const {
  * Input: double amount
  * Output: bool
  */
-bool CheckingAccount::checkAccount(double amount) {
+bool CheckingAccount::checkAccount(double amount)
+{
     return getAccountBalance() >= amount;
 }
 
@@ -157,8 +165,10 @@ bool CheckingAccount::checkAccount(double amount) {
  * Input: double amount
  * Output: None
  */
-void CheckingAccount::withdrawAccount(double amount) {
-    if (checkAccount(amount)) {
+void CheckingAccount::withdrawAccount(double amount)
+{
+    if (checkAccount(amount))
+    {
         setAccountBalance(getAccountBalance() - amount);
     }
 }
@@ -186,7 +196,8 @@ SavingsAccount::SavingsAccount(string name, double amount, double rate)
  * Input: None
  * Output: int
  */
-int SavingsAccount::getWithdrawalEvents() {
+int SavingsAccount::getWithdrawalEvents()
+{
     return withdrawalEvents;
 }
 
@@ -196,7 +207,8 @@ int SavingsAccount::getWithdrawalEvents() {
  * Input: None
  * Output: None
  */
-void SavingsAccount::resetWithdrawalEvents() {
+void SavingsAccount::resetWithdrawalEvents()
+{
     withdrawalEvents = 0;
 }
 
@@ -206,13 +218,14 @@ void SavingsAccount::resetWithdrawalEvents() {
  * Input: None
  * Output: None
  */
-void SavingsAccount::printAccountInfo() const {
+void SavingsAccount::printAccountInfo() const
+{
     cout << fixed << setprecision(2);
-    cout << "Savings account for customer " 
+    cout << "Savings account for customer "
          << getCustomerName() << endl;
-    cout << "Current balance: " 
+    cout << "Current balance: "
          << getAccountBalance() << endl;
-    cout << "APR: " << getInterestRate() 
+    cout << "APR: " << getInterestRate()
          << "%" << endl;
 }
 
@@ -222,9 +235,9 @@ void SavingsAccount::printAccountInfo() const {
  * Input: double amount
  * Output: bool
  */
-bool SavingsAccount::checkAccount(double amount) {
-    return getAccountBalance() >= amount && withdrawalEvents 
-                               < MAX_WITHDRAWALS;
+bool SavingsAccount::checkAccount(double amount)
+{
+    return getAccountBalance() >= amount && withdrawalEvents < MAX_WITHDRAWALS;
 }
 
 /*
@@ -233,8 +246,10 @@ bool SavingsAccount::checkAccount(double amount) {
  * Input: double amount
  * Output: None
  */
-void SavingsAccount::withdrawAccount(double amount) {
-    if (checkAccount(amount)) {
+void SavingsAccount::withdrawAccount(double amount)
+{
+    if (checkAccount(amount))
+    {
         setAccountBalance(getAccountBalance() - amount);
         withdrawalEvents++;
     }

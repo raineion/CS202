@@ -22,7 +22,7 @@ bool isPalindrome(string str, int start, int end)
    // if the string is empty or has one character, it is a palindrome
    if (start >= end)
       return true;
-   // if the first and last characters 
+   // if the first and last characters
    // do not match, it is not a palindrome
    if (str[start] != str[end])
       return false;

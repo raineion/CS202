@@ -1,14 +1,14 @@
 /*
 * Name: Daniel Martinez Julio, CS 202 - Summer II, Assignment 2
-* Description: Implements the studentGrade class for 
+* Description: Implements the studentGrade class for
                managing student grades.
 * Input: N/A (information is set using the setStudentGrade method).
-* Output: Student ID, first name, last name, assignment grades, 
+* Output: Student ID, first name, last name, assignment grades,
 *         midterm exam grade, final exam grade.
 */
 
 #include "studentGrade.h" // for studentGrade class
-#include <iostream> // for cout
+#include <iostream>       // for cout
 
 using namespace std; // avoid using `std::`
 
@@ -18,7 +18,8 @@ using namespace std; // avoid using `std::`
  * parameters: None.
  * return value: None.
  */
-studentGrade::studentGrade() {
+studentGrade::studentGrade()
+{
     studentID = "";
     firstName = "";
     lastName = "";
@@ -31,27 +32,29 @@ studentGrade::studentGrade() {
 
 // Parametrized constructor
 /*
- * studentGrade: Constructor to initialize member 
+ * studentGrade: Constructor to initialize member
  *               variables with provided values.
- * parameters: string ID, string fName, string lName, int a1, 
+ * parameters: string ID, string fName, string lName, int a1,
  *             int a2, int a3, int midE, int finE.
  * return value: None.
  */
-studentGrade::studentGrade(string ID, string fName, string lName, 
-                          int a1, int a2, int a3, int midE, int finE) {
+studentGrade::studentGrade(string ID, string fName, string lName,
+                           int a1, int a2, int a3, int midE, int finE)
+{
     setStudentGrade(ID, fName, lName, a1, a2, a3, midE, finE);
 }
 
 // Setter function for all member variables
 /*
  * setStudentGrade: Sets all member variables.
- * parameters: string ID, string fName, string lName, int a1, 
+ * parameters: string ID, string fName, string lName, int a1,
  *             int a2, int a3, int midE, int finE.
  * return value: None.
  */
-void studentGrade::setStudentGrade(string ID, string fName, 
-                                  string lName, int a1, 
-                                  int a2, int a3, int midE, int finE) {
+void studentGrade::setStudentGrade(string ID, string fName,
+                                   string lName, int a1,
+                                   int a2, int a3, int midE, int finE)
+{
     studentID = ID;
     firstName = fName;
     lastName = lName;
@@ -68,7 +71,8 @@ void studentGrade::setStudentGrade(string ID, string fName,
  * parameters: string ID.
  * return value: None.
  */
-void studentGrade::setStudentID(string ID) {
+void studentGrade::setStudentID(string ID)
+{
     studentID = ID;
 }
 
@@ -76,7 +80,7 @@ void studentGrade::setStudentID(string ID) {
 /*
  * Getter functions: Returns the corresponding member variable values.
  * parameters: None.
- * return value: string/int - the value of the 
+ * return value: string/int - the value of the
  *                            corresponding member variable.
  */
 string studentGrade::getStudentID() const { return studentID; }
@@ -94,28 +98,35 @@ int studentGrade::getFinalExam() const { return finalExam; }
  * parameters: None.
  * return value: bool - true if all scores are valid, false otherwise.
  */
-bool studentGrade::checkScores() {
-    return (asst1 >= 0 && asst1 <= 100 && asst2 >= 0 && 
-           asst2 <= 100 && asst3 >= 0 && asst3 <= 100 &&
-           midtermExam >= 0 && midtermExam <= 100 && 
-           finalExam >= 0 && finalExam <= 100);
+bool studentGrade::checkScores()
+{
+    return (asst1 >= 0 && asst1 <= 100 && asst2 >= 0 &&
+            asst2 <= 100 && asst3 >= 0 && asst3 <= 100 &&
+            midtermExam >= 0 && midtermExam <= 100 &&
+            finalExam >= 0 && finalExam <= 100);
 }
 
 // Function for calculating a student's letter grade
 /*
- * calculateLetterGrade: Calculates the letter grade 
+ * calculateLetterGrade: Calculates the letter grade
  *                       based on weighted scores.
  * parameters: None.
  * return value: char - the letter grade.
  */
-char studentGrade::calculateLetterGrade() {
-    double average = (asst1 + asst2 + asst3) / 3.0 * 0.5 + 
+char studentGrade::calculateLetterGrade()
+{
+    double average = (asst1 + asst2 + asst3) / 3.0 * 0.5 +
                      midtermExam * 0.25 + finalExam * 0.25;
-    if (average >= 90) return 'A';
-    else if (average >= 80) return 'B';
-    else if (average >= 70) return 'C';
-    else if (average >= 60) return 'D';
-    else return 'F';
+    if (average >= 90)
+        return 'A';
+    else if (average >= 80)
+        return 'B';
+    else if (average >= 70)
+        return 'C';
+    else if (average >= 60)
+        return 'D';
+    else
+        return 'F';
 }
 
 // Function for printing student grade to stdout
@@ -124,7 +135,8 @@ char studentGrade::calculateLetterGrade() {
  * parameters: None.
  * return value: None.
  */
-void studentGrade::printStudentGrade() const {
+void studentGrade::printStudentGrade() const
+{
     cout << "Student ID: " << studentID << endl;
     cout << "First Name: " << firstName << endl;
     cout << "Last Name: " << lastName << endl;
@@ -141,6 +153,7 @@ void studentGrade::printStudentGrade() const {
  * parameters: None.
  * return value: None.
  */
-studentGrade::~studentGrade() {
+studentGrade::~studentGrade()
+{
     // Nothing to destruct
 }
