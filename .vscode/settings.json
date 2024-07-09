@@ -1,0 +1,14 @@
+{
+   "files.associations": {
+      "*.embeddedhtml": "html",
+      "*.rmd": "markdown",
+      "__bit_reference": "cpp",
+      "__split_buffer": "cpp",
+      "array": "cpp",
+      "iterator": "cpp",
+      "string": "cpp",
+      "string_view": "cpp",
+      "vector": "cpp"
+   },
+   "C_Cpp.errorSquiggles": "disabled"
+}
